@@ -5,6 +5,7 @@ import { config } from './config';
 import userRoutes from './modules/users/routes/user.routes';
 import authRoutes from './modules/auth/auth.routes';
 import { initDb } from './config/db';
+import cors from '@fastify/cors';
 
 const app = Fastify();
 
@@ -18,6 +19,11 @@ app.register(fastifySwagger, {
     },
   },
   exposeRoute: true,
+});
+
+app.register(cors, {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 });
 
 app.register(fastifyJwt, {
