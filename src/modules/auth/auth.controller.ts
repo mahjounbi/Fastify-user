@@ -6,7 +6,6 @@ import { config } from '../../config';
 
 export const loginController = async (req: FastifyRequest, reply: FastifyReply) => {
   const { email, password } = req.body as any;
-  console.log('req.body', req.body)
 
   if (!email || !password) {
     return reply.status(400).send({ error: 'Email and password are required.' });
